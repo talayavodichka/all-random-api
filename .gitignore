@@ -19,7 +19,6 @@ venv.bak/
 
 **/docker-compose.yml
 **/Dockerfile
-**/.dockerignore
 !Dockerfile
 
 *.log
