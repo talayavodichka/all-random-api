@@ -12,26 +12,45 @@ git clone https://github.com/your-username/all-random-api.git
 cd all-random-api
 ```
 
-### Generate Deterministic Random Number
+## Endpoints
+
+### Generate Number
 
 - **Method**: `GET`
 - **Endpoint**: `/random-number`
-- **Description**: Generates a unique 128-bit integer based on SHA-256 hash of the seed.  
-  *Guaranteed no collisions for different seeds*.
 - **Parameters**:
-  - `seed` (string, required): Input seed value
+  - `seed` (string, required)
 - **Request**:
 
 ```bash
-  curl "http://localhost:8000/random-number?seed=nice_try_251"
+  curl "http://localhost:8000/random-number?seed=test123"
 ```
 
 - **Response**:
 
 ```json
 {
-  "seed": "nice_try_251",
-  "random_number": 335722038548047932699313735189696540443,
-  "bit_length": 128
+  "random_number": 335722038548047932699313735189696540443
+}
+```
+
+### Generate Bytes
+
+- **Method**: `GET`
+- **Endpoint**: `/random-bytes`
+- **Parameters**:
+  - `seed` (string, required)
+  - `length` (string, optional)
+- **Request**:
+
+```bash
+  curl "http://localhost:8000/random-bytes?seed=test123&length=32"
+```
+
+- **Response**:
+
+```json
+{
+  "random_bytes": 335722038548047932699313735189696540443
 }
 ```
