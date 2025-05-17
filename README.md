@@ -20,8 +20,18 @@ cd all-random-api
   *Guaranteed no collisions for different seeds*.
 - **Parameters**:
   - `seed` (string, required): Input seed value
-- **Example**:
+- **Request**:
 
 ```bash
   curl "http://localhost:8000/random-number?seed=nice_try_251"
+```
+
+- **Response**:
+
+```json
+{
+  "seed": "nice_try_251",
+  "random_number": 18371491348517238501723048571234098123,
+  "bit_length": 128
+}
 ```
