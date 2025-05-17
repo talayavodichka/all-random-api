@@ -31,7 +31,7 @@ cd all-random-api
 ```json
 {
   "seed": "nice_try_251",
-  "random_number": 18371491348517238501723048571234098123,
+  "random_number": 335722038548047932699313735189696540443,
   "bit_length": 128
 }
 ```
