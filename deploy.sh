@@ -73,6 +73,11 @@ main() {
     echo "Manage service: sudo systemctl [start|stop|restart] $APP_NAME"
 }
 
+if [[ $# -eq 0 ]]; then
+    main
+    exit 0
+fi
+
 case "$1" in
     -h|--help)
         echo "Usage: $0 [options]"
