@@ -16,17 +16,28 @@ cd all-random-api
 
 | Title | Method | Endpoint | Parameters | Request | Response |
 | --- | --- | --- | --- | --- | --- |
-| Generate Boolean | `GET` | `/random-bool` | `seed` (string, required) | `http://localhost:8000/random-bool?seed=test123` | ```{"bool": true}``` |
-| Generate Digit | `GET` | `/random-digit` | `seed` (string, required) | `http://localhost:8000/random-digit?seed=test123` | ```{"digit": 5}``` |
-| Generate Character | `GET` | `/random-char` | `seed` (string, required) | `http://localhost:8000/random-char?seed=test123` | ```{"char": "A"}``` |
-| Generate Number | `GET` | `/random-number` | `seed` (string, required) | `http://localhost:8000/random-number?seed=test123` | ```{"number": 335722038548047932699313735189696540443}``` |
-| Generate Hash | `GET` | `/random-hash` | `seed` (string, required), `algorithm` (string, optional, default=sha256) | `http://localhost:8000/random-hash?seed=test123&algorithm=md5` | ```{"hash": "e10adc3949ba59abbe56e057f20f883e"}``` |
-| Generate Bytes | `GET` | `/random-bytes` | `seed` (string, required), `length` (int, optional, default=16) | `http://localhost:8000/random-bytes?seed=test123&length=32` | ```{"bytes": "bWYyNWJiZGNjNDJlYjM0ZTBj..."}``` |
-| Generate Timestamp | `GET` | `/random-timestamp` | `seed` (string, required), `days` (int, optional, default=365) | `http://localhost:8000/random-timestamp?seed=test123&days=100` | ```{"timestamp": "2023-07-15 14:30:45.123456"}``` |
-| Generate Color | `GET` | `/random-color` | `seed` (string, required) | `http://localhost:8000/random-color?seed=test123` | ```{"color": "#a1b2c3"}``` |
-| Generate UUID | `GET` | `/random-uuid` | `seed` (string, required) | `http://localhost:8000/random-uuid?seed=test123` | ```{"uuid": "550e8400-e29b-41d4-a716-446655440000"}``` |
-| Generate Password | `GET` | `/random-password` | `seed` (string, required), `length` (int, optional, default=12) | `http://localhost:8000/random-password?seed=test123&length=16` | ```{"password": "Pa$sw0Rd!12345XyZ"}``` |
-| Random Choice | `GET` | `/random-choice` | `seed` (string, required), `items` (comma-separated string, required) | `http://localhost:8000/random-choice?seed=test123&items=square,circle,triangle` | ```{"choice": "circle"}``` |
+| **Deterministic Boolean** | `GET` | `/det/random-bool` | `seed` (string, required) | `http://localhost:8000/det/random-bool?seed=test123` | ```{"bool": true}``` |
+| **Non-Deterministic Boolean** | `GET` | `/nondet/random-bool` | None | `http://localhost:8000/nondet/random-bool` | ```{"bool": false}``` |
+| **Deterministic Digit** | `GET` | `/det/random-digit` | `seed` (string, required) | `http://localhost:8000/det/random-digit?seed=test123` | ```{"digit": 5}``` |
+| **Non-Deterministic Digit** | `GET` | `/nondet/random-digit` | None | `http://localhost:8000/nondet/random-digit` | ```{"digit": 3}``` |
+| **Deterministic Character** | `GET` | `/det/random-char` | `seed` (string, required) | `http://localhost:8000/det/random-char?seed=test123` | ```{"char": "A"}``` |
+| **Non-Deterministic Character** | `GET` | `/nondet/random-char` | None | `http://localhost:8000/nondet/random-char` | ```{"char": "$"}``` |
+| **Deterministic Number** | `GET` | `/det/random-number` | `seed` (string, required) | `http://localhost:8000/det/random-number?seed=test123` | ```{"number": 335722038548047932699313735189696540443}``` |
+| **Non-Deterministic Number** | `GET` | `/nondet/random-number` | None | `http://localhost:8000/nondet/random-number` | ```{"number": 123456789012345678901234567890123456789}``` |
+| **Deterministic Hash** | `GET` | `/det/random-hash` | `seed` (string, required), `algorithm` (string, optional, default=sha256) | `http://localhost:8000/det/random-hash?seed=test123&algorithm=md5` | ```{"hash": "e10adc3949ba59abbe56e057f20f883e"}``` |
+| **Non-Deterministic Hash** | `GET` | `/nondet/random-hash` | `algorithm` (string, optional, default=sha256) | `http://localhost:8000/nondet/random-hash?algorithm=md5` | ```{"hash": "a1b2c3d4e5f6..."}``` |
+| **Deterministic Bytes** | `GET` | `/det/random-bytes` | `seed` (string, required), `length` (int, optional, default=16) | `http://localhost:8000/det/random-bytes?seed=test123&length=32` | ```{"bytes": "bWYyNWJiZGNjNDJlYjM0ZTBj..."}``` |
+| **Non-Deterministic Bytes** | `GET` | `/nondet/random-bytes` | `length` (int, optional, default=16) | `http://localhost:8000/nondet/random-bytes?length=32` | ```{"bytes": "aGVsbG8gd29ybGQh..."}``` |
+| **Deterministic Timestamp** | `GET` | `/det/random-timestamp` | `seed` (string, required), `days` (int, optional, default=365) | `http://localhost:8000/det/random-timestamp?seed=test123&days=100` | ```{"timestamp": "2023-07-15 14:30:45.123456"}``` |
+| **Non-Deterministic Timestamp** | `GET` | `/nondet/random-timestamp` | `days` (int, optional, default=365) | `http://localhost:8000/nondet/random-timestamp?days=100` | ```{"timestamp": "2024-01-01 00:00:00.000000"}``` |
+| **Deterministic Color** | `GET` | `/det/random-color` | `seed` (string, required) | `http://localhost:8000/det/random-color?seed=test123` | ```{"color": "#a1b2c3"}``` |
+| **Non-Deterministic Color** | `GET` | `/nondet/random-color` | None | `http://localhost:8000/nondet/random-color` | ```{"color": "#ff00cc"}``` |
+| **Deterministic UUID** | `GET` | `/det/random-uuid` | `seed` (string, required) | `http://localhost:8000/det/random-uuid?seed=test123` | ```{"uuid": "550e8400-e29b-41d4-a716-446655440000"}``` |
+| **Non-Deterministic UUID** | `GET` | `/nondet/random-uuid` | None | `http://localhost:8000/nondet/random-uuid` | ```{"uuid": "d41d8cd9-8f00-3204-a980-0998ecf8427e"}``` |
+| **Deterministic Password** | `GET` | `/det/random-password` | `seed` (string, required), `length` (int, optional, default=12) | `http://localhost:8000/det/random-password?seed=test123&length=16` | ```{"password": "Pa$sw0Rd!12345XyZ"}``` |
+| **Non-Deterministic Password** | `GET` | `/nondet/random-password` | `length` (int, optional, default=12) | `http://localhost:8000/nondet/random-password?length=16` | ```{"password": "9$kLm@rQvZpTn..."}``` |
+| **Deterministic Choice** | `GET` | `/det/random-choice` | `seed` (string, required), `items` (comma-separated string, required) | `http://localhost:8000/det/random-choice?seed=test123&items=square,circle,triangle` | ```{"choice": "circle"}``` |
+| **Non-Deterministic Choice** | `GET` | `/nondet/random-choice` | `items` (comma-separated string, required) | `http://localhost:8000/nondet/random-choice?items=square,circle,triangle` | ```{"choice": "triangle"}``` |
 
 **Notes:**
 
