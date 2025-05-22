@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Path
+from typing import Annotated
 from datetime import datetime, timedelta
 import hashlib
 import base64
@@ -40,16 +41,16 @@ def nondet_generate_char():
     char_code = hashed[0] % 94 + 33
     return {"char": chr(char_code)}
 
-@app.get("/det/random-number")
-def det_generate_number(seed: str):
+@app.get("/det/random-int-number")
+def det_generate_number(seed: str, min_val: int = -2147483647, max_val: int = 2147483647):
     hashed = hashlib.sha256(seed.encode()).digest()
-    number = int.from_bytes(hashed[:16], byteorder="big")
+    number = int(int.from_bytes(hashed[:16], byteorder="big") % (max_val - min_val + 1) + min_val)
     return {"number": number}
 
-@app.get("/nondet/random-number")
-def nondet_generate_number():
+@app.get("/nondet/random-int-number")
+def nondet_generate_number(min_val: int = -2147483647, max_val: int = 2147483647):
     hashed = hashlib.sha256(get_seed_by_time().encode()).digest()
-    number = int.from_bytes(hashed[:16], byteorder="big")
+    number = int(int.from_bytes(hashed[:16], byteorder="big") % (max_val - min_val + 1) + min_val)
     return {"number": number}
 
 @app.get("/det/random-hash")
@@ -135,11 +136,11 @@ def nondet_random_choice(items: str):
     return {"choice": arr[index].strip()}
 
 @app.get("/det/random-ip")
-def det_random_ip(seed: str, items: str):
+def det_random_ip(seed: str):
     hashed = hashlib.sha256(seed.encode()).digest()
     return {"ip": f"{(hashed[0] % 254) + 1}.{hashed[1] % 256}.{hashed[2] % 256}.{hashed[3] % 256}"}
 
 @app.get("/nondet/random-ip")
-def nondet_random_ip(items: str):
+def nondet_random_ip():
     hashed = hashlib.sha256(get_seed_by_time().encode()).digest()
     return {"ip": f"{(hashed[0] % 254) + 1}.{hashed[1] % 256}.{hashed[2] % 256}.{hashed[3] % 256}"}
