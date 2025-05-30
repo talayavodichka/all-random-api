@@ -42,8 +42,8 @@ cd all-random-api
 | **Non-Deterministic Password** | `GET` | `/nondet/random-password` | `length` (int, optional, default=12) | `http://localhost:8000/nondet/random-password?length=16` | ```{"password": "9$kLm@rQvZpTn..."}``` |
 | **Deterministic Choice** | `GET` | `/det/random-choice` | `seed` (string, required), `items` (comma-separated string, required) | `http://localhost:8000/det/random-choice?seed=test123&items=square,circle,triangle` | ```{"choice": "circle"}``` |
 | **Non-Deterministic Choice** | `GET` | `/nondet/random-choice` | `items` (comma-separated string, required) | `http://localhost:8000/nondet/random-choice?items=square,circle,triangle` | ```{"choice": "triangle"}``` |
-| **Deterministic IP** | `GET` | `/det/random-ip` | `seed` (string, required) | `http://localhost:8000/det/random-ip?seed=test123` | ```{"ip": "123.45.67.89"}``` |
-| **Non-Deterministic IP** | `GET` | `/nondet/random-ip` | None | `http://localhost:8000/nondet/random-ip` | ```{"ip": "84.203.12.45"}``` |
+| **Deterministic IPv4** | `GET` | `/det/random-ipv4` | `seed` (string, required) | `http://localhost:8000/det/random-ipv4?seed=test123` | ```{"ipv4": "123.45.67.89"}``` |
+| **Non-Deterministic IPv4** | `GET` | `/nondet/random-ipv4` | None | `http://localhost:8000/nondet/random-ipv4` | ```{"ipv4": "84.203.12.45"}``` |
 
 **Notes:**
 
