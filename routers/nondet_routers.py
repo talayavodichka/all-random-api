@@ -18,10 +18,15 @@ async def nondet_char():
     seed = seed_manager.get_seed_by_time()
     return {"char": generators.generate_char(seed)}
 
-@router.get("/random-number")
-async def nondet_number(min_val: int = -2147483647, max_val: int = 2147483647):
+@router.get("/random-integer")
+async def nondet_integer(min_val: int = -2147483647, max_val: int = 2147483647):
     seed = seed_manager.get_seed_by_time()
-    return {"number": generators.generate_number(seed, min_val, max_val)}
+    return {"integer": generators.generate_integer(seed, min_val, max_val)}
+
+@router.get("/random-float")
+async def det_float(min_val: float = -2147483647.0, max_val: float = 2147483647.0):
+    seed = seed_manager.get_seed_by_time()
+    return {"float": generators.generate_float(seed, min_val, max_val)}
 
 @router.get("/random-hash")
 async def nondet_hash(algorithm: str = "sha256"):
@@ -65,3 +70,8 @@ async def nondet_choice(items: str = ""):
 async def nondet_ipv4():
     seed = seed_manager.get_seed_by_time()
     return {"ipv4": generators.generate_ipv4(seed)}
+
+@router.get("/random-coords")
+async def det_coords():
+    seed = seed_manager.get_seed_by_time()
+    return {"coords": generators.generate_coords(seed)}

@@ -15,9 +15,13 @@ async def det_digit(seed: str = Query(...)):
 async def det_char(seed: str = Query(...)):
     return {"char": generators.generate_char(seed)}
 
-@router.get("/random-number")
-async def det_number(seed: str = Query(...), min_val: int = -2147483647, max_val: int = 2147483647):
-    return {"number": generators.generate_number(seed, min_val, max_val)}
+@router.get("/random-integer")
+async def det_integer(seed: str = Query(...), min_val: int = -2147483647, max_val: int = 2147483647):
+    return {"integer": generators.generate_integer(seed, min_val, max_val)}
+
+@router.get("/random-float")
+async def det_float(seed: str = Query(...), min_val: float = -2147483647.0, max_val: float = 2147483647.0):
+    return {"float": generators.generate_float(seed, min_val, max_val)}
 
 @router.get("/random-hash")
 async def det_hash(seed: str = Query(...), algorithm: str = "sha256"):
@@ -53,3 +57,7 @@ async def det_choice(seed: str = Query(...), items: str = ""):
 @router.get("/random-ipv4")
 async def det_ipv4(seed: str = Query(...)):
     return {"ipv4": generators.generate_ipv4(seed)}
+
+@router.get("/random-coords")
+async def det_coords(seed: str = Query(...)):
+    return {"coords": generators.generate_coords(seed)}

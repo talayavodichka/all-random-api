@@ -26,8 +26,10 @@ cd all-random-api
 | **Non-Deterministic Digit** | `GET` | `/nondet/random-digit` | None | `http://localhost:8000/nondet/random-digit` | ```{"digit": 3}``` |
 | **Deterministic Character** | `GET` | `/det/random-char` | `seed` (string, required) | `http://localhost:8000/det/random-char?seed=test123` | ```{"char": "A"}``` |
 | **Non-Deterministic Character** | `GET` | `/nondet/random-char` | None | `http://localhost:8000/nondet/random-char` | ```{"char": "$"}``` |
-| **Deterministic Number** | `GET` | `/det/random-int-number` | `seed` (string, required), `min_val` (int, optional, default=-2147483647), `max_val` (int, optional, default=2147483647) | `http://localhost:8000/det/random-int-number?seed=test123` | ```{"number": -3357220}``` |
-| **Non-Deterministic Number** | `GET` | `/nondet/random-int-number` | `min_val` (int, optional, default=-2147483647), `max_val` (int, optional, default=2147483647) | `http://localhost:8000/nondet/random-int-number` | ```{"number": 123456789}``` |
+| **Deterministic Integer** | `GET` | `/det/random-integer` | `seed` (string, required), `min_val` (int, optional, default=-2147483647), `max_val` (int, optional, default=2147483647) | `http://localhost:8000/det/random-integer?seed=test123` | ```{"integer": -3357220}``` |
+| **Non-Deterministic Integer** | `GET` | `/nondet/random-integer` | `min_val` (int, optional, default=-2147483647), `max_val` (int, optional, default=2147483647) | `http://localhost:8000/nondet/random-integer` | ```{"integer": 123456789}``` |
+| **Deterministic Float** | `GET` | `/det/random-float` | `seed` (string, required), `min_val` (float, optional, default=-2147483647), `max_val` (float, optional, default=2147483647) | `http://localhost:8000/det/random-float?seed=test123` | ```{"float": -3357220.0}``` |
+| **Non-Deterministic Float** | `GET` | `/nondet/random-float` | `min_val` (float, optional, default=-2147483647), `max_val` (float, optional, default=2147483647) | `http://localhost:8000/nondet/random-float` | ```{"float": 123456789.0}``` |
 | **Deterministic Hash** | `GET` | `/det/random-hash` | `seed` (string, required), `algorithm` (string, optional, default=sha256) | `http://localhost:8000/det/random-hash?seed=test123&algorithm=md5` | ```{"hash": "e10adc3949ba59abbe56e057f20f883e"}``` |
 | **Non-Deterministic Hash** | `GET` | `/nondet/random-hash` | `algorithm` (string, optional, default=sha256) | `http://localhost:8000/nondet/random-hash?algorithm=md5` | ```{"hash": "a1b2c3d4e5f6..."}``` |
 | **Deterministic Bytes** | `GET` | `/det/random-bytes` | `seed` (string, required), `length` (int, optional, default=16) | `http://localhost:8000/det/random-bytes?seed=test123&length=32` | ```{"bytes": "bWYyNWJiZGNjNDJlYjM0ZTBj..."}``` |
@@ -44,6 +46,8 @@ cd all-random-api
 | **Non-Deterministic Choice** | `GET` | `/nondet/random-choice` | `items` (comma-separated string, required) | `http://localhost:8000/nondet/random-choice?items=square,circle,triangle` | ```{"choice": "triangle"}``` |
 | **Deterministic IPv4** | `GET` | `/det/random-ipv4` | `seed` (string, required) | `http://localhost:8000/det/random-ipv4?seed=test123` | ```{"ipv4": "123.45.67.89"}``` |
 | **Non-Deterministic IPv4** | `GET` | `/nondet/random-ipv4` | None | `http://localhost:8000/nondet/random-ipv4` | ```{"ipv4": "84.203.12.45"}``` |
+| **Deterministic Coords** | `GET` | `/det/random-coords` | `seed` (string, required) | `http://localhost:8000/det/random-coords?seed=test123` | ```{"coords": [65.98980952135085, 65.67239892364952]}``` |
+| **Non-Deterministic Coords** | `GET` | `/nondet/random-coords` | None | `http://localhost:8000/nondet/random-coords` | ```{"coords":  [55.883126975850075, 109.69373725793417]}``` |
 
 **Notes:**
 
