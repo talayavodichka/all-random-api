@@ -46,6 +46,8 @@ cd all-random-api
 | **Non-Deterministic Choice** | `GET` | `/nondet/random-choice` | `items` (comma-separated string, required) | `http://localhost:8000/nondet/random-choice?items=square,circle,triangle` | ```{"choice": "triangle"}``` |
 | **Deterministic IPv4** | `GET` | `/det/random-ipv4` | `seed` (string, required) | `http://localhost:8000/det/random-ipv4?seed=test123` | ```{"ipv4": "123.45.67.89"}``` |
 | **Non-Deterministic IPv4** | `GET` | `/nondet/random-ipv4` | None | `http://localhost:8000/nondet/random-ipv4` | ```{"ipv4": "84.203.12.45"}``` |
+| **Deterministic IPv6** | `GET` | `/det/random-ipv6` | `seed` (string, required) | `http://localhost:8000/det/random-ipv6?seed=test123` | ```{"ipv6": "746c:1cf7:60fe:8a6b:2e9d:1a81:2e23:df9d"}``` |
+| **Non-Deterministic IPv6** | `GET` | `/nondet/random-ipv6` | None | `http://localhost:8000/nondet/random-ipv6` | ```{"ipv6": "343e:2f33:cb3d:01a1:14d5:631b:e7a6:8455"}``` |
 | **Deterministic Coords** | `GET` | `/det/random-coords` | `seed` (string, required) | `http://localhost:8000/det/random-coords?seed=test123` | ```{"coords": [65.98980952135085, 65.67239892364952]}``` |
 | **Non-Deterministic Coords** | `GET` | `/nondet/random-coords` | None | `http://localhost:8000/nondet/random-coords` | ```{"coords":  [55.883126975850075, 109.69373725793417]}``` |
 

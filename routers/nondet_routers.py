@@ -71,6 +71,11 @@ async def nondet_ipv4():
     seed = seed_manager.get_seed_by_time()
     return {"ipv4": generators.generate_ipv4(seed)}
 
+@router.get("/random-ipv6")
+async def nondet_ipv6():
+    seed = seed_manager.get_seed_by_time()
+    return {"ipv6": generators.generate_ipv6(seed)}
+
 @router.get("/random-coords")
 async def det_coords():
     seed = seed_manager.get_seed_by_time()

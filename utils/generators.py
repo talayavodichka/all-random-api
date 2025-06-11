@@ -52,6 +52,14 @@ def generate_ipv4(seed: str) -> str:
     hashed = hashlib.sha256(seed.encode()).digest()
     return f"{(hashed[0] % 254) + 1}.{hashed[1] % 256}.{hashed[2] % 256}.{hashed[3] % 256}"
 
+def generate_ipv6(seed: str) -> str:
+    hashed = hashlib.sha256(seed.encode()).digest()[:16]
+    hextets = [
+        '{:04x}'.format(int.from_bytes(hashed[i:i+2], 'big'))
+        for i in range(0, 16, 2)
+    ]
+    return ':'.join(hextets)
+
 def generate_coords(seed: str) -> tuple:
     hashed = hashlib.sha256(seed.encode()).digest()
     return (generate_float(str(hashed[0]), -90, 90), generate_float(str(~hashed[0]), -180, 180))

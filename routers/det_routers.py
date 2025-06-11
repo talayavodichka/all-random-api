@@ -58,6 +58,10 @@ async def det_choice(seed: str = Query(...), items: str = ""):
 async def det_ipv4(seed: str = Query(...)):
     return {"ipv4": generators.generate_ipv4(seed)}
 
+@router.get("/random-ipv6")
+async def det_ipv6(seed: str = Query(...)):
+    return {"ipv6": generators.generate_ipv6(seed)}
+
 @router.get("/random-coords")
 async def det_coords(seed: str = Query(...)):
     return {"coords": generators.generate_coords(seed)}
