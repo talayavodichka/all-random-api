@@ -24,6 +24,10 @@ def generate_float(seed: str, min_val: float = -2147483647.0, max_val: float = 2
     rand53 = int.from_bytes(hashlib.sha256(seed.encode()).digest()[:16], byteorder='big') & max_53
     return min_val + (rand53 / max_53) * (max_val - min_val)
 
+def generate_string(seed: str, length: int = 12) -> str:
+    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    return "".join(chars[b % len(chars)] for b in hashlib.sha256(seed.encode()).digest()[:length])
+
 def generate_hash(seed: str, algorithm: str = "sha256") -> str:
     return hashlib.new(algorithm, seed.encode()).hexdigest()
 

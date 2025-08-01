@@ -23,6 +23,10 @@ async def det_integer(seed: str = Query(...), min_val: int = -2147483647, max_va
 async def det_float(seed: str = Query(...), min_val: float = -2147483647.0, max_val: float = 2147483647.0):
     return {"float": generators.generate_float(seed, min_val, max_val)}
 
+@router.get("/random-string")
+async def det_string(seed: str = Query(...), length: int = 12):
+    return {"string": generators.generate_string(seed, length)}
+
 @router.get("/random-hash")
 async def det_hash(seed: str = Query(...), algorithm: str = "sha256"):
     try:

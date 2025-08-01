@@ -28,6 +28,11 @@ async def det_float(min_val: float = -2147483647.0, max_val: float = 2147483647.
     seed = seed_manager.get_seed_by_time()
     return {"float": generators.generate_float(seed, min_val, max_val)}
 
+@router.get("/random-string")
+async def det_string(length: int = 12):
+    seed = seed_manager.get_seed_by_time()
+    return {"string": generators.generate_string(seed, length)}
+
 @router.get("/random-hash")
 async def nondet_hash(algorithm: str = "sha256"):
     try:
